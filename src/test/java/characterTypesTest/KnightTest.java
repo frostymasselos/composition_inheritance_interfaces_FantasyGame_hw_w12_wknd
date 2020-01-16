@@ -78,6 +78,17 @@ public class KnightTest {
         assertEquals("Axe", knight.getWeapon().getName());
     }
 
+    @Test
+    public void wealthStartsOffAtZero () {
+        assertEquals(0, knight.getWealth(), 0.01);
+    }
+
+    @Test
+    public void wealthCanIncrease () {
+        knight.addWealth(100);
+        assertEquals(100, knight.getWealth(), 0.01);
+    }
+
 
 
 

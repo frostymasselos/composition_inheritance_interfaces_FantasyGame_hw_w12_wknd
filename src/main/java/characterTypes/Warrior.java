@@ -76,8 +76,12 @@ public abstract class Warrior implements IPlayer {
         this.weapon = weapon;
     }
 
-    public double getWealth() {
+    public double getWealth () {
         return wealth;
+    }
+
+    public void addWealth (int amount) {
+        wealth += amount;
     }
 
     public int attack(){
