@@ -10,4 +10,8 @@ public abstract class Reviveable {
     public int getHealth() {
         return this.health;
     }
+
+    public void emptyBottle(){
+        this.health = 0;
+    }
 }
