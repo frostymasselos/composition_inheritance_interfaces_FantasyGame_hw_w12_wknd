@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class KnightTest {
 
@@ -42,11 +43,20 @@ public class KnightTest {
     public void canDie () {
         knight.looseHealth(200);
         assertEquals(200, knight.getHealth());
-//        opportunity to have a 'save person' method and their health's back restored'
+//        opportunity to have a 'save person' method and their health's back restored to what it was before'
         assertEquals(false, knight.isAlive());
     }
 
-    
+//    add in defense if you want to.
+
+    @Test
+    public void canGetWeapon () {
+        assertNotNull(knight.getWeapon()); 
+    }
+
+
+
+
 
 
 

@@ -49,6 +49,7 @@ public abstract class Warrior implements IPlayer {
                 current_Health -= health;
             } else {
                 this.alive = false;
+                System.out.println(this.getName() + " has fallen at the hands of...");
 
             }
         } else {
