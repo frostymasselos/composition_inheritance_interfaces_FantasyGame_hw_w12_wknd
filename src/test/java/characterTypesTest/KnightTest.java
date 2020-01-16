@@ -22,8 +22,20 @@ public class KnightTest {
     }
 
     @Test
-    public void canGetHealth () {
+    public void startsOffAlive () {
+        assertEquals(true, knight.isAlive());
+    }
+
+    @Test
+    public void healthStartsAt200 () {
         assertEquals(200, knight.getHealth());
     }
+
+//    @Test
+//    public void canGetHealth () {
+//        knight.looseHealth(50);
+//        assertEquals(150, knight.getHealth());
+//        assertEquals(true knight.)
+//    }
 
 }
