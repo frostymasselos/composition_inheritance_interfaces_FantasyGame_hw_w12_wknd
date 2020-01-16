@@ -11,7 +11,7 @@ public abstract class Reviveable {
         return this.health;
     }
 
-    public void emptyBottle(){
-        this.health = 0;
+    public void pourBottle(int value){
+        this.health -= value;
     }
 }

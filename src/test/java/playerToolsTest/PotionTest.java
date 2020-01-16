@@ -21,8 +21,8 @@ public class PotionTest {
 
     @Test
     public void canLooseHealth() {
-        potion.emptyBottle();
-        assertEquals(0, potion.getHealth());
+        potion.pourBottle(20);
+        assertEquals(25, potion.getHealth());
     }
 
 }
