@@ -1,10 +1,11 @@
-package playerTools.defensible;
+package playerTools.creature;
 
-public class Defensible {
+public abstract class Creature {
+
     private int protection;
 
-    public Defensible(int protection){
-        this.protection = protection;
+    public Creature(int damage) {
+        this.protection = damage;
     }
 
     public int getProtection(){
@@ -14,4 +15,5 @@ public class Defensible {
     public void looseProtection(int value){
         this.protection -= value;
     }
+
 }

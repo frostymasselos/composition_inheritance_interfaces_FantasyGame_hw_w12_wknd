@@ -1,11 +1,11 @@
 package playerToolsTest;
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.attackable.Sword;
+import playerTools.weapon.Sword;
 
 import static org.junit.Assert.assertEquals;
 
-public class SwordClassTest {
+public class SwordTest {
     private Sword sword;
 
     @Before

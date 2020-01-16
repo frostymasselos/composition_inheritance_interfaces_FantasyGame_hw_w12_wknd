@@ -1,9 +1,9 @@
-package playerTools.attackable;
+package playerTools.weapon;
 
-public abstract class Attackable {
+public abstract class Weapon {
     private int damage;
 
-    public Attackable(int damage) {
+    public Weapon(int damage) {
         this.damage = damage;
     }
 

@@ -2,7 +2,7 @@ package playerToolsTest;
 
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.reviveable.Potion;
+import playerTools.revivalTool.Potion;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,9 +1,9 @@
-package playerTools.reviveable;
+package playerTools.revivalTool;
 
-public abstract class Reviveable {
+public abstract class RevivingTool {
     private int health;
 
-    public Reviveable(int health) {
+    public RevivingTool(int health) {
         this.health = health;
     }
 
