@@ -18,4 +18,10 @@ public class OgreTest {
     public void canGetProtection() {
         assertEquals(75, ogre.getProtection());
     }
+
+    @Test
+    public void canLooseProtection() {
+        ogre.looseProtection(20);
+        assertEquals(55, ogre.getProtection());
+    }
 }
