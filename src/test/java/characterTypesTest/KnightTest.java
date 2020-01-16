@@ -4,6 +4,8 @@ import characterTypes.Knight;
 import characterTypes.KnightType;
 import org.junit.Before;
 import org.junit.Test;
+import playerTools.weapon.Axe;
+import playerTools.weapon.Weapon;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,10 +13,12 @@ import static org.junit.Assert.assertNotNull;
 public class KnightTest {
 
     private Knight knight;
+    private Weapon axe;
 
     @Before
     public void before () {
         knight = new Knight(KnightType.ARAGORN);
+        axe = new Axe();
     }
 
     @Test
@@ -63,14 +67,15 @@ public class KnightTest {
         assertEquals(200, knight.getHealth());
     }
 
-//    @Test
-//    public void canGetWeapon () {
-//        assertEquals();
-//    }
+    @Test
+    public void canGetWeapon () {
+        assertEquals("Sword", knight.getWeapon().getName());
+    }
 
     @Test
     public void canChangeWeapon () {
-        assertNotNull(knight.getWeapon());
+        knight.changeWeapon(axe);
+        assertEquals("Axe", knight.getWeapon().getName());
     }
 
 
