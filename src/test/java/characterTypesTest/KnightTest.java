@@ -21,6 +21,9 @@ public class KnightTest {
         assertEquals("Aragorn", knight.getName());
     }
 
-    
+    @Test
+    public void canGetHealth () {
+        assertEquals(200, knight.getHealth());
+    }
 
 }
