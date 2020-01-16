@@ -1,4 +1,4 @@
-package playerTools;
+package playerTools.defensible;
 
 public class Ogre extends Defensible {
 

@@ -1,4 +1,4 @@
-package playerTools;
+package playerTools.attackable;
 
 public abstract class Attackable {
     private int damage;

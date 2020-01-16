@@ -1,4 +1,6 @@
-package playerTools;
+package playerTools.attackable;
+
+import playerTools.attackable.Attackable;
 
 public class FireBall extends Attackable {
 

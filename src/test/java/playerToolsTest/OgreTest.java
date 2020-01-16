@@ -2,7 +2,7 @@ package playerToolsTest;
 
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.Ogre;
+import playerTools.defensible.Ogre;
 
 import static org.junit.Assert.assertEquals;
 
