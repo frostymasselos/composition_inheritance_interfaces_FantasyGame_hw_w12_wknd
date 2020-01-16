@@ -3,8 +3,7 @@ package playerTools.weapon;
 public class Club extends Weapon {
 
     public Club(){
-        super(20);
+        super("Club", 15);
     }
-
 
 }

@@ -3,6 +3,6 @@ package playerTools.weapon;
 public class Axe extends Weapon {
 
     public Axe(){
-        super(40);
+        super("Club", 30);
     }
 }

@@ -14,6 +14,11 @@ public class SwordTest {
     }
 
     @Test
+    public void canGetName () {
+        assertEquals("Sword", sword.getName());
+    }
+
+    @Test
     public void canGetDamage(){
         assertEquals(35, sword.getDamage());
     }

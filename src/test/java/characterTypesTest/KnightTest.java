@@ -50,8 +50,27 @@ public class KnightTest {
 //    add in defense if you want to.
 
     @Test
-    public void canGetWeapon () {
-        assertNotNull(knight.getWeapon()); 
+    public void canAddHealth () {
+        knight.looseHealth(50);
+        knight.gainHealth(30);
+        assertEquals(180, knight.getHealth());
+    }
+
+    @Test
+    public void addingHealthDoesNotSurpassMaxHealth () {
+        knight.looseHealth(50);
+        knight.gainHealth(60);
+        assertEquals(200, knight.getHealth());
+    }
+
+//    @Test
+//    public void canGetWeapon () {
+//        assertEquals();
+//    }
+
+    @Test
+    public void canChangeWeapon () {
+        assertNotNull(knight.getWeapon());
     }
 
 
