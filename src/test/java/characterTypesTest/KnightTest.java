@@ -31,11 +31,28 @@ public class KnightTest {
         assertEquals(200, knight.getHealth());
     }
 
-//    @Test
-//    public void canGetHealth () {
-//        knight.looseHealth(50);
-//        assertEquals(150, knight.getHealth());
-//        assertEquals(true knight.)
-//    }
+    @Test
+    public void canlooseHealth () {
+        knight.looseHealth(50);
+        assertEquals(150, knight.getHealth());
+        assertEquals(true, knight.isAlive());
+    }
+
+    @Test
+    public void canDie () {
+        knight.looseHealth(200);
+        assertEquals(200, knight.getHealth());
+//        opportunity to have a 'save person' method and their health's back restored'
+        assertEquals(false, knight.isAlive());
+    }
+
+    
+
+
+
+
+
+
+
 
 }

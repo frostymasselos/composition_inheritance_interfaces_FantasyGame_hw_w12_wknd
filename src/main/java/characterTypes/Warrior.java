@@ -45,7 +45,7 @@ public abstract class Warrior implements IPlayer {
 
     public void looseHealth(int health) {
         if (health >= 0) {
-            if (current_Health - health > 0) {
+            if ((current_Health - health) > 0) {
                 current_Health -= health;
             } else {
                 this.alive = false;
@@ -55,10 +55,10 @@ public abstract class Warrior implements IPlayer {
             System.out.println("Health number is negative");
         }
 
-        if (this.alive = false) {
+        if (this.alive == false) {
             //remove character from game; whatever array he'll alway be in when fighting, he'll be removed from.
         } else {
-            System.out.println(this.getName() + "took " + Integer.toString(health) + " damage");
+            System.out.println(this.getName() + " took " + Integer.toString(health) + " damage");
             System.out.println(this.getName() + "'s health is " + Integer.toString(this.current_Health) );
         }
     }
