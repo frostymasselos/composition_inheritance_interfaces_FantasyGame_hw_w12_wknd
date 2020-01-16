@@ -1,11 +1,11 @@
 package playerTools.weapon;
 
-public abstract class Weapon {
+public abstract class FighterWeapon {
 
     private String name;
     private int damage;
 
-    public Weapon(String name, int damage) {
+    public FighterWeapon(String name, int damage) {
         this.name = name;
         this.damage = damage;
     }

@@ -1,18 +1,18 @@
 package characterTypes;
 
-import playerTools.weapon.Weapon;
+import playerTools.weapon.FighterWeapon;
 
-public abstract class Warrior implements IPlayer {
+public abstract class Magi implements IPlayer {
 
     private int max_Health; //choose in sub
     private int defense; //choose in sub
-    private Weapon weapon; //choose in sub
+    private FighterWeapon weapon; //choose in sub
     private double wealth; //default
     private int current_Health;
     private boolean alive; //default
 
 
-    public Warrior(int max_Health, int defense, Weapon weapon) {
+    public Magi(int max_Health, int defense, FighterWeapon weapon) {
         this.max_Health = max_Health;
         this.defense = defense;
         this.weapon = weapon;
@@ -68,11 +68,11 @@ public abstract class Warrior implements IPlayer {
         return defense;
     }
 
-    public Weapon getWeapon() {
+    public FighterWeapon getWeapon() {
         return weapon;
     }
 
-    public void changeWeapon(Weapon weapon) {
+    public void changeWeapon(FighterWeapon weapon) {
         this.weapon = weapon;
     }
 
@@ -82,9 +82,12 @@ public abstract class Warrior implements IPlayer {
 
     public void addWealth (int amount) {
         wealth += amount;
+        System.out.println(this.getName() + " acquired " + Integer.toString(amount) + " wealth");
+        System.out.println(this.getName() + " now has " + Integer.toString((int)this.getWealth()) + " wealth");
     }
 
     public int attack(){
+        System.out.println(this.getName() + " attacks!");
         return this.weapon.getDamage();
     }
 }
