@@ -7,7 +7,7 @@ public class Dwarf extends Warrior {
     private DwarfType name;
 
     public Dwarf (DwarfType name) {
-        super(175, 150, new Axe("Axe"));
+        super(175, 30, new Axe("Axe"));
         this.name = name;
     }
 

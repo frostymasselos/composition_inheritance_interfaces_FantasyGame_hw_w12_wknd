@@ -29,7 +29,7 @@ public class KnightTest {
 
     @Test
     public void startsOffAlive () {
-        assertEquals(true, knight.isAlive());
+        assertEquals(true, knight.checkIfAlive());
     }
 
     @Test
@@ -41,18 +41,30 @@ public class KnightTest {
     public void canLooseHealth () {
         knight.looseHealth(50);
         assertEquals(150, knight.getHealth());
-        assertEquals(true, knight.isAlive());
+        assertEquals(true, knight.checkIfAlive());
     }
 
     @Test
     public void canDie () {
         knight.looseHealth(200);
-        assertEquals(200, knight.getHealth());
+        assertEquals(0, knight.getHealth());
 //        opportunity to have a 'save person' method and their health's back restored to what it was before'
-        assertEquals(false, knight.isAlive());
+        assertEquals(false, knight.checkIfAlive());
     }
 
-//    add in defense if you want to.
+    @Test
+    public void knightDoesNotLoseHealthWhenDefenseIsNotBroken () {
+        knight.sustainAttack(20);
+        assertEquals(200, knight.getHealth());
+        assertEquals(50, knight.getDefense());
+    }
+
+    @Test
+    public void knightLosesHealthFromOverkill () {
+        knight.sustainAttack(71);
+        assertEquals(199, knight.getHealth());
+        assertEquals(0, knight.getDefense());
+    }
 
     @Test
     public void canAddHealth () {

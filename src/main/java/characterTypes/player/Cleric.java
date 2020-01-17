@@ -1,7 +1,5 @@
 package characterTypes.player;
 
-import characterTypes.player.Player;
-import characterTypes.player.magi.ClericType;
 import playerComponents.revivalTool.RevivingTool;
 
 public class Cleric extends Player {
@@ -20,6 +18,7 @@ public class Cleric extends Player {
     }
 
     public void changeRevivingTool (RevivingTool revivingTool) {
+//        and push your current reviving tool to the map?
         this.revivingTool = revivingTool;
     }
 

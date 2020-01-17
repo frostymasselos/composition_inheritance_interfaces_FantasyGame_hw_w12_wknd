@@ -7,7 +7,7 @@ public class Barbarian extends Warrior {
     private BarbarianType name;
 
     public Barbarian (BarbarianType name) {
-        super(175, 150, new Club("Club"));
+        super(175, 10, new Club("Club"));
         this.name = name;
     }
 

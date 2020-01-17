@@ -21,8 +21,30 @@ public abstract class Player implements IPlayer {
         this.alive = true;
     }
 
-    public boolean isAlive() {
-        return alive;
+
+    public boolean checkIfAlive () {
+        if (current_Health > 0) {
+            return alive;
+        } else {
+            this.alive = false;
+            return this.alive;
+        }
+    }
+
+    public boolean isFullHealth () {
+        if (current_Health == max_Health) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void kill () {
+        this.current_Health = 0;
+    }
+
+    public void restoreFullHealth () {
+        this.current_Health = max_Health;
     }
 
     public int getHealth() {
@@ -35,12 +57,25 @@ public abstract class Player implements IPlayer {
                 current_Health += health;
                 System.out.println(this.getName() + "'s health increases to " + Integer.toString(this.current_Health));
             } else {
-                current_Health = max_Health;
+                restoreFullHealth();
                 System.out.println(this.getName() + "'s health is fully restored");
             }
         } else {
             System.out.println("Health number is negative");
+            return;
         }
+    }
+
+//    public void sustainAttack (int attack) {
+//        if (creature.checkIfAlive()) {
+//            creature.looseHealth(attack);
+//        } else {
+//            looseHealth(attack);
+//        }
+//    }
+
+    public void sustainAttack (int attack) {
+        this.looseHealth(attack);
     }
 
     public void looseHealth(int health) {
@@ -48,12 +83,14 @@ public abstract class Player implements IPlayer {
             if ((current_Health - health) > 0) {
                 current_Health -= health;
             } else {
-                this.alive = false;
+                kill();
+                checkIfAlive();
                 System.out.println(this.getName() + " has fallen at the hands of...");
 
             }
         } else {
             System.out.println("Health number is negative");
+            return;
         }
 
         if (this.alive == false) {

@@ -1,6 +1,9 @@
 package playerComponents.creature;
 
-public abstract class Creature {
+import playerComponents.ForAMagi;
+import playerComponents.Swappable;
+
+public abstract class Creature implements Swappable, ForAMagi {
 
     private String name;
     private int max_Health;
@@ -23,7 +26,7 @@ public abstract class Creature {
         if (current_Health > 0) {
             return alive;
         } else {
-            this.alive = false;
+//            this.alive = false;
             return this.alive;
         }
     }
@@ -38,6 +41,11 @@ public abstract class Creature {
 
     public void killCreature () {
         current_Health = 0;
+        this.alive = false;
+    }
+
+    public void restoreFullHealth () {
+        current_Health = max_Health;
     }
 
     public int getHealth () {
@@ -50,9 +58,8 @@ public abstract class Creature {
                 current_Health -= health;
             } else {
                 System.out.println(this.getName() + " is Dead");
-
                 killCreature();
-                checkIfAlive();
+//                checkIfAlive();
             }
         } else {
             System.out.println("Health number is negative");

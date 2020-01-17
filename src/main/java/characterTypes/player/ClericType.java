@@ -1,4 +1,4 @@
-package characterTypes.player.magi;
+package characterTypes.player;
 
 public enum ClericType {
 

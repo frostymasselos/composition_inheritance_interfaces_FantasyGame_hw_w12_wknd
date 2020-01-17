@@ -1,8 +1,10 @@
 package playerComponents.fighterWeapon.spell;
 
+import playerComponents.ForAMagi;
+import playerComponents.Swappable;
 import playerComponents.fighterWeapon.FighterWeapon;
 
-public abstract class Spell {
+public abstract class Spell implements Swappable, ForAMagi {
 
     private String name;
     private int damage;

@@ -36,6 +36,13 @@ public class OgreTest {
     }
 
     @Test
+    public void canRestoreFullHealth () {
+        ogre.looseHealth(25);
+        ogre.restoreFullHealth();
+        assertEquals(75, ogre.getHealth());
+    }
+
+    @Test
     public void canLooseProtection() {
         ogre.looseHealth(20);
         assertEquals(55, ogre.getHealth());
@@ -54,6 +61,5 @@ public class OgreTest {
         assertEquals(0, ogre.getHealth());
         assertEquals(false, ogre.checkIfAlive());
     }
-
 
 }

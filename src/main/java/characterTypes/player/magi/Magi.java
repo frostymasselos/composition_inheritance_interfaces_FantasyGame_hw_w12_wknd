@@ -1,13 +1,14 @@
 package characterTypes.player.magi;
 
 import characterTypes.player.Player;
+import characterTypes.player.fighter.IFighter;
 import playerComponents.creature.Creature;
 import playerComponents.fighterWeapon.spell.Spell;
 
 import java.util.ArrayList;
 
 
-public abstract class Magi extends Player {
+public abstract class Magi extends Player implements IFighter {
 
     private Creature creature;
     private Spell weapon;
@@ -18,6 +19,18 @@ public abstract class Magi extends Player {
         this.weapon = weapon;
     }
 
+    public void sustainAttack (int attack) {
+        if (creature.checkIfAlive()) {
+            creature.looseHealth(attack);
+        } else {
+            looseHealth(attack);
+        }
+    }
+
+    public void restoreDefenses (){
+        creature.restoreFullHealth();
+    }
+
     public Creature getCreature () {
         return creature;
     }
@@ -26,8 +39,9 @@ public abstract class Magi extends Player {
         this.creature = creature;
     }
 
-    public String getWeapon() {
-        return weapon.getName();
+
+    public Spell getWeapon() {
+        return weapon;
     }
 
     public void changeWeapon(Spell weapon) {

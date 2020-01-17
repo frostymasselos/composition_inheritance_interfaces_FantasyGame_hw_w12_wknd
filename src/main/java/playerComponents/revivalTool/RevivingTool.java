@@ -1,6 +1,9 @@
 package playerComponents.revivalTool;
 
-public abstract class RevivingTool {
+import playerComponents.ForACleric;
+import playerComponents.Swappable;
+
+public abstract class RevivingTool implements Swappable, ForACleric {
 
     private String name;
     private int max_Amount;

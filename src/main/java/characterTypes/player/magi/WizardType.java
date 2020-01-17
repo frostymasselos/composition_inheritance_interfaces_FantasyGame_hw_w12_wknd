@@ -2,7 +2,7 @@ package characterTypes.player.magi;
 
 public enum WizardType {
 
-    GANDALF("Gandlaf"),
+    GANDALF("Gandalf"),
     DUMBLEDORE("Dubledore");
 
     private final String name;

@@ -8,7 +8,7 @@ public class Knight extends Warrior {
     private KnightType name;
 
     public Knight (KnightType name) {
-        super(200, 175, new Sword("Sword"));
+        super(200, 70, new Sword("Sword"));
         this.name = name;
     }
 
