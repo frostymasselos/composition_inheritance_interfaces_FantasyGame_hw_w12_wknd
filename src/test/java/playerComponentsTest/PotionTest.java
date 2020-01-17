@@ -25,6 +25,11 @@ public class PotionTest {
     }
 
     @Test
+    public void canReturnAmount () {
+        assertEquals(45, potion.getAmount());
+    }
+
+    @Test
     public void canGetHealth() {
         assertEquals(45, potion.getAmount());
     }
