@@ -25,8 +25,25 @@ public class PotionTest {
     }
 
     @Test
-    public void canReturnAmount () {
+    public void canGetIsFull () {
+        assertEquals(true, potion.isFull());
+    }
+
+    @Test
+    public void doesNotSayFullWhenNotFull () {
+        potion.pour(25);
+        assertEquals(false, potion.isFull());
+    }
+
+    @Test
+    public void canGetAmount () {
         assertEquals(45, potion.getAmount());
+    }
+
+    @Test
+    public void canPour () {
+        potion.pour(25);
+        assertEquals(20, potion.getAmount());
     }
 
     @Test
@@ -36,8 +53,9 @@ public class PotionTest {
 
     @Test
     public void canLooseHealth() {
-        potion.pourBottle(20);
+        potion.pour(20);
         assertEquals(25, potion.getAmount());
+        assertEquals(true, potion.isFilled());
     }
 
 }

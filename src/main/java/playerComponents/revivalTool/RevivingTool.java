@@ -22,12 +22,20 @@ public abstract class RevivingTool {
         return filled;
     }
 
+    public boolean isFull () {
+        if (current_Amount == max_Amount) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public int getAmount() {
         return current_Amount;
     }
 
 
-    public void pourBottle(int amount) {
+    public void pour(int amount) {
         if (amount >= 0) {
             if ((current_Amount - amount) > 0) {
                 current_Amount -= amount;
