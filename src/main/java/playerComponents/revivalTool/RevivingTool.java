@@ -18,8 +18,14 @@ public abstract class RevivingTool {
         return name;
     }
 
-    public boolean isFilled() {
-        return filled;
+    public boolean checkIfFilled () {
+        if (current_Amount > 0) {
+            return filled;
+        } else {
+            this.filled = false;
+            return this.filled;
+        }
+
     }
 
     public boolean isFull () {
@@ -34,18 +40,24 @@ public abstract class RevivingTool {
         return current_Amount;
     }
 
+    public void clearBottle () {
+        current_Amount = 0;
+    }
+
 
     public void pour(int amount) {
         if (amount >= 0) {
             if ((current_Amount - amount) > 0) {
                 current_Amount -= amount;
             } else {
-                this.filled = false;
-                System.out.println(this.getName() + " is filled...");
+                clearBottle();
+                this.checkIfFilled();
+                System.out.println(this.getName() + " is empty");
 
             }
         } else {
             System.out.println("Amount number is negative");
+            return;
         }
 
         if (this.filled == false) {

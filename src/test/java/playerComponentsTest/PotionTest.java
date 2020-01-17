@@ -21,7 +21,7 @@ public class PotionTest {
 
     @Test
     public void startsFilled () {
-        assertEquals(true, potion.isFilled());
+        assertEquals(true, potion.checkIfFilled());
     }
 
     @Test
@@ -47,15 +47,15 @@ public class PotionTest {
     }
 
     @Test
-    public void canGetHealth() {
+    public void willNotPourAsNegativeNumber () {
+        potion.pour(-25);
         assertEquals(45, potion.getAmount());
     }
 
     @Test
-    public void canLooseHealth() {
-        potion.pour(20);
-        assertEquals(25, potion.getAmount());
-        assertEquals(true, potion.isFilled());
+    public void simplyEmptiesIfPoursAnOverwhelmingAMount () {
+        potion.pour(50);
+        assertEquals(0, potion.getAmount());
     }
 
 }
