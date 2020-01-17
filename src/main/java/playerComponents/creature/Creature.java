@@ -14,20 +14,62 @@ public abstract class Creature {
         this.alive = true;
     }
 
-
     public String getName () {
         return name;
     }
 
-    public boolean isAlive() {
-        return alive;
+
+    public boolean checkIfAlive () {
+        if (current_Health > 0) {
+            return alive;
+        } else {
+            this.alive = false;
+            return this.alive;
+        }
     }
 
-    public int getHealth() {
+    public boolean checkIfFullHealth () {
+        if (current_Health == max_Health) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void killCreature () {
+        current_Health = 0;
+    }
+
+    public int getHealth () {
         return current_Health;
     }
 
-//    public void gainHealth(int health) {
+    public void looseHealth(int health) {
+        if (health >= 0) {
+            if ((current_Health - health) > 0) {
+                current_Health -= health;
+            } else {
+                System.out.println(this.getName() + " is Dead");
+
+                killCreature();
+                checkIfAlive();
+            }
+        } else {
+            System.out.println("Health number is negative");
+            System.out.println(this.getName() + "'s health is " + Integer.toString(this.current_Health));
+            return;
+        }
+
+        if (this.alive == false) {
+            //make sure attacks are redirected at the owner of this beast.
+        } else {
+            System.out.println(this.getName() + " took " + Integer.toString(health) + " damage");
+            System.out.println(this.getName() + "'s health is " + Integer.toString(this.current_Health) );
+        }
+    }
+
+
+    //    public void gainHealth(int health) {
 //        if (health >= 0) {
 //            if (current_Health + health <= max_Health) {
 //                current_Health += health;
@@ -40,27 +82,6 @@ public abstract class Creature {
 //            System.out.println("Health number is negative");
 //        }
 //    }
-
-    public void looseHealth(int health) {
-        if (health >= 0) {
-            if ((current_Health - health) > 0) {
-                current_Health -= health;
-            } else {
-                this.alive = false;
-                System.out.println(this.getName() + " has fallen at the hands of...");
-
-            }
-        } else {
-            System.out.println("Health number is negative");
-        }
-
-        if (this.alive == false) {
-            //make sure attacks are redirected at the owner of this beast.
-        } else {
-            System.out.println(this.getName() + " took " + Integer.toString(health) + " damage");
-            System.out.println(this.getName() + "'s health is " + Integer.toString(this.current_Health) );
-        }
-    }
 
 
 
