@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class TreasureClass {
 
     private String name;
-    private int wealth;
+    private double wealth;
 
     public TreasureClass(String name, int wealth) {
         this.name = name;
@@ -16,8 +16,15 @@ public abstract class TreasureClass {
         return this.name;
     }
 
-    public int getWealth() {
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 3);
-        return wealth * randomNum;
+    public double getCoreWealth () {
+        return this.wealth;
+    }
+
+    public double getWealth() {
+        int coreValue = (int)wealth;
+        int upperValue = (int)wealth * 3;
+
+        double randomNum = (ThreadLocalRandom.current().nextInt(coreValue, upperValue));
+        return randomNum;
     }
 }
