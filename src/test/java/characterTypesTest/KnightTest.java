@@ -1,11 +1,12 @@
 package characterTypesTest;
 
-import characterTypes.Knight;
-import characterTypes.KnightType;
+import characterTypes.player.warrior.Knight;
+import characterTypes.player.warrior.KnightType;
 import org.junit.Before;
 import org.junit.Test;
 import playerComponents.fighterWeapon.warriorWeapon.Axe;
 import playerComponents.fighterWeapon.FighterWeapon;
+import playerComponents.fighterWeapon.warriorWeapon.WarriorWeapon;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,12 +14,12 @@ import static org.junit.Assert.assertNotNull;
 public class KnightTest {
 
     private Knight knight;
-    private FighterWeapon axe;
+    private WarriorWeapon axe;
 
     @Before
     public void before () {
         knight = new Knight(KnightType.ARAGORN);
-        axe = new Axe();
+        axe = new Axe("Axe");
     }
 
     @Test
@@ -37,7 +38,7 @@ public class KnightTest {
     }
 
     @Test
-    public void canlooseHealth () {
+    public void canLooseHealth () {
         knight.looseHealth(50);
         assertEquals(150, knight.getHealth());
         assertEquals(true, knight.isAlive());
@@ -93,16 +94,6 @@ public class KnightTest {
     public void canAttack () {
         assertEquals(35, knight.attack());
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

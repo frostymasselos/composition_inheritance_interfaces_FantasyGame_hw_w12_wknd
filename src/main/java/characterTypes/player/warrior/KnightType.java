@@ -1,4 +1,4 @@
-package characterTypes;
+package characterTypes.player.warrior;
 
 public enum KnightType {
     ARAGORN("Aragorn"),

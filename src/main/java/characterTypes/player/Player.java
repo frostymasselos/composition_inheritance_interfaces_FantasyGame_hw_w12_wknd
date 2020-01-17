@@ -1,21 +1,21 @@
-package characterTypes;
+package characterTypes.player;
 
-import playerComponents.fighterWeapon.FighterWeapon;
+import characterTypes.IPlayer;
 
-public abstract class Magi implements IPlayer {
+public abstract class Player implements IPlayer {
 
     private int max_Health; //choose in sub
-    private int defense; //choose in sub
-    private FighterWeapon weapon; //choose in sub
-    private double wealth; //default
     private int current_Health;
+//    private int defense; //choose in sub
+//    private Weapon weapon; //choose in sub
+    private double wealth; //default
     private boolean alive; //default
 
-
-    public Magi(int max_Health, int defense, FighterWeapon weapon) {
+//    , int defense, Weapon weapon
+    public Player(int max_Health) {
         this.max_Health = max_Health;
-        this.defense = defense;
-        this.weapon = weapon;
+//        this.defense = defense;
+//        this.weapon = weapon;
         this.wealth = 0.0;
         this.current_Health = max_Health;
         this.alive = true;
@@ -64,18 +64,6 @@ public abstract class Magi implements IPlayer {
         }
     }
 
-    public int getDefense() {
-        return defense;
-    }
-
-    public FighterWeapon getWeapon() {
-        return weapon;
-    }
-
-    public void changeWeapon(FighterWeapon weapon) {
-        this.weapon = weapon;
-    }
-
     public double getWealth () {
         return wealth;
     }
@@ -86,8 +74,23 @@ public abstract class Magi implements IPlayer {
         System.out.println(this.getName() + " now has " + Integer.toString((int)this.getWealth()) + " wealth");
     }
 
-    public int attack(){
-        System.out.println(this.getName() + " attacks!");
-        return this.weapon.getDamage();
-    }
+//    public int getDefense() {
+//        return defense;
+//    }
+//
+//    public Weapon getWeapon() {
+//        return weapon;
+//    }
+//
+//    public void changeWeapon(Weapon weapon) {
+//        this.weapon = weapon;
+//    }
+
+//    public int attack(){
+//        System.out.println(this.getName() + " attacks!");
+//        return this.weapon.getDamage();
+//    }
+
+
+
 }

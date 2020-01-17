@@ -2,9 +2,21 @@ package playerComponents.fighterWeapon.spell;
 
 import playerComponents.fighterWeapon.FighterWeapon;
 
-public abstract class Spell extends FighterWeapon {
+public abstract class Spell {
 
-    public Spell(String name, int damage) {
-        super(name, damage);
+    private String name;
+    private int damage;
+
+    public Spell (String name, int damage) {
+        this.name = name;
+        this.damage = damage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDamage() {
+        return this.damage;
     }
 }

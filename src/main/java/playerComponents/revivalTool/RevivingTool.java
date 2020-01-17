@@ -18,7 +18,7 @@ public abstract class RevivingTool {
         return name;
     }
 
-    public boolean isEmpty() {
+    public boolean isFilled() {
         return filled;
     }
 

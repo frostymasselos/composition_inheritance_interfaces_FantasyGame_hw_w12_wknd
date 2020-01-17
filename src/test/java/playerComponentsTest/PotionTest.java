@@ -16,7 +16,12 @@ public class PotionTest {
 
     @Test
     public void canGetName () {
-        assertEquals("Potion", potion.getName()); 
+        assertEquals("Potion", potion.getName());
+    }
+
+    @Test
+    public void startsFilled () {
+        assertEquals(true, potion.isFilled());
     }
 
     @Test

@@ -11,17 +11,17 @@ public class OgreTest {
 
     @Before
     public void before() {
-        ogre = new Ogre();
+        ogre = new Ogre("Shrek");
     }
 
     @Test
     public void canGetProtection() {
-        assertEquals(75, ogre.getProtection());
+        assertEquals(75, ogre.getHealth());
     }
 
     @Test
     public void canLooseProtection() {
-        ogre.looseProtection(20);
-        assertEquals(55, ogre.getProtection());
+        ogre.looseHealth(20);
+        assertEquals(55, ogre.getHealth());
     }
 }
