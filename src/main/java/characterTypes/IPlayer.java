@@ -1,8 +1,7 @@
 package characterTypes;
 
-public interface IPlayer {
+public interface IPlayer extends ILiving {
 
-    public String getName();
-    public int getHealth();
     public double getWealth();
+
 }

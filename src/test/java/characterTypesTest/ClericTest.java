@@ -1,7 +1,7 @@
 package characterTypesTest;
 
-import characterTypes.player.Cleric;
-import characterTypes.player.ClericType;
+import characterTypes.cleric.Cleric;
+import characterTypes.cleric.ClericType;
 import org.junit.Before;
 import org.junit.Test;
 import playerComponents.revivalTool.Herb;
