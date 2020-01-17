@@ -4,8 +4,8 @@ import characterTypes.Knight;
 import characterTypes.KnightType;
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.weapon.Axe;
-import playerTools.weapon.FighterWeapon;
+import playerComponents.fighterWeapon.warriorWeapon.Axe;
+import playerComponents.fighterWeapon.FighterWeapon;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

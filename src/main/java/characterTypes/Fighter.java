@@ -1,6 +1,6 @@
 package characterTypes;
 
-import playerTools.weapon.FighterWeapon;
+import playerComponents.fighterWeapon.FighterWeapon;
 
 public abstract class Fighter extends Player {
 

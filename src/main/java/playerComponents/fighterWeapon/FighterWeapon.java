@@ -1,4 +1,4 @@
-package playerTools.weapon;
+package playerComponents.fighterWeapon;
 
 public abstract class FighterWeapon {
 

@@ -2,7 +2,7 @@ package characterTypes;
 
 public abstract class Player implements IPlayer {
 
-    protected int max_Health; //choose in sub
+    private int max_Health; //choose in sub
     private int current_Health;
 //    private int defense; //choose in sub
 //    private Weapon weapon; //choose in sub
@@ -88,5 +88,7 @@ public abstract class Player implements IPlayer {
 //        System.out.println(this.getName() + " attacks!");
 //        return this.weapon.getDamage();
 //    }
+
+
 
 }

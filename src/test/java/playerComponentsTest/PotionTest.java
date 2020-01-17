@@ -1,8 +1,8 @@
-package playerToolsTest;
+package playerComponentsTest;
 
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.revivalTool.Potion;
+import playerComponents.revivalTool.Potion;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,18 +11,23 @@ public class PotionTest {
 
     @Before
     public void before() {
-        potion = new Potion();
+        potion = new Potion("Potion");
+    }
+
+    @Test
+    public void canGetName () {
+        assertEquals("Potion", potion.getName()); 
     }
 
     @Test
     public void canGetHealth() {
-        assertEquals(45, potion.getHealth());
+        assertEquals(45, potion.getAmount());
     }
 
     @Test
     public void canLooseHealth() {
         potion.pourBottle(20);
-        assertEquals(25, potion.getHealth());
+        assertEquals(25, potion.getAmount());
     }
 
 }

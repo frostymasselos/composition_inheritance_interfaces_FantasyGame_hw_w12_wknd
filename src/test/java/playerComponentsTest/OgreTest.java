@@ -1,8 +1,8 @@
-package playerToolsTest;
+package playerComponentsTest;
 
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.creature.Ogre;
+import playerComponents.creature.Ogre;
 
 import static org.junit.Assert.assertEquals;
 

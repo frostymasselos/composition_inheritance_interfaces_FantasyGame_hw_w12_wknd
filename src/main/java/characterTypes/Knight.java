@@ -1,6 +1,6 @@
 package characterTypes;
 
-import playerTools.weapon.Sword;
+import playerComponents.fighterWeapon.warriorWeapon.Sword;
 
 public class Knight extends Fighter {
 

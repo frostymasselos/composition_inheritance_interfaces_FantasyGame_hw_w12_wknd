@@ -1,7 +1,7 @@
-package playerToolsTest;
+package playerComponentsTest;
 import org.junit.Before;
 import org.junit.Test;
-import playerTools.weapon.Sword;
+import playerComponents.fighterWeapon.warriorWeapon.Sword;
 
 import static org.junit.Assert.assertEquals;
 
