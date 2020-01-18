@@ -1,13 +1,13 @@
-package gameSetup;
+package gameSetup.treasure;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class TreasureClass {
+public abstract class Treasure {
 
     private String name;
     private double wealth;
 
-    public TreasureClass(String name, int wealth) {
+    public Treasure(String name, int wealth) {
         this.name = name;
         this.wealth = wealth;
     }

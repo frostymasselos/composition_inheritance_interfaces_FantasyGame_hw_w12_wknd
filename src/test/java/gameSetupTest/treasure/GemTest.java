@@ -1,7 +1,6 @@
-package gameSetupTest;
+package gameSetupTest.treasure;
 
-import gameSetup.Gem;
-import gameSetup.Gem;
+import gameSetup.treasure.Gem;
 import org.junit.Before;
 import org.junit.Test;
 

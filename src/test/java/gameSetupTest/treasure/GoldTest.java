@@ -1,10 +1,8 @@
-package gameSetupTest;
+package gameSetupTest.treasure;
 
-import gameSetup.Gold;
+import gameSetup.treasure.Gold;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
