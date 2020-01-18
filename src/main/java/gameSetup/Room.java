@@ -36,42 +36,41 @@ public class Room {
         }
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void addToPlayers(Player player) {
+        this.players.add(player);
     }
 
     public ArrayList<Player> getDeadPlayers() {
         return deadPlayers;
     }
 
-    public void setDeadPlayers(ArrayList<Player> deadPlayers) {
-        this.deadPlayers = deadPlayers;
+    public void addToDeadPlayers(Player player) {
+        this.deadPlayers.add(player);
     }
 
     public ArrayList<Antagonist> getAntagonists() {
         return antagonists;
     }
 
-    public void setAntagonists(ArrayList<Antagonist> antagonists) {
-        this.antagonists = antagonists;
+    public void addToAntagonists(Antagonist antagonist) {
+        this.antagonists.add(antagonist);
     }
 
     public ArrayList<Antagonist> getDeadAntagonists() {
         return deadAntagonists;
     }
 
-    public void setDeadAntagonists(ArrayList<Antagonist> deadAntagonists) {
-        this.deadAntagonists = deadAntagonists;
+    public void addToDeadAntagonists(Antagonist antagonist) {
+        this.deadAntagonists.add(antagonist);
     }
 
     public ArrayList<Treasure> getTreasures() {
         return treasureRoom;
     }
 
-    public void setTreasures(ArrayList<Treasure> treasureRoom) {
-        this.treasureRoom = treasureRoom;
+    public void addToTreasures(Treasure treasure) {
+        this.treasureRoom.add(treasure);
     }
-
 
 //    SURVIVING PLAYERS COLLECT TREASURE
 
