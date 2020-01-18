@@ -15,14 +15,22 @@ import static org.junit.Assert.assertEquals;
 public class RoomTest {
 
     private Room room;
-    private Player knight;
+    private Player knight1;
+    private Player knight2;
+    private Player knight3;
+    private Player knight4;
+    private Player knight5;
     private Antagonist troll;
     private Treasure gold;
 
     @Before
     public void before () {
         room = new Room();
-        knight = new Knight(KnightType.BOROMIR);
+        knight1 = new Knight(KnightType.BOROMIR);
+        knight2 = new Knight(KnightType.BOROMIR);
+        knight3 = new Knight(KnightType.BOROMIR);
+        knight4 = new Knight(KnightType.BOROMIR);
+        knight5 = new Knight(KnightType.BOROMIR);
         troll = new Troll();
         gold = new Gold();
     }
@@ -39,8 +47,8 @@ public class RoomTest {
 
     @Test
     public void everyArrayCanBeAddedTo () {
-        room.addToPlayers(knight);
-        room.addToDeadPlayers(knight);
+        room.addToPlayers(knight1);
+        room.addToDeadPlayers(knight2);
         room.addToAntagonists(troll);
         room.addToDeadAntagonists(troll);
         room.addToTreasures(gold);
@@ -54,8 +62,38 @@ public class RoomTest {
     }
 
     @Test
-    public void returnsFalseWhenPlayersPopulated () {
-
+    public void playersCanGetWealthFromTreasureRoom () {
+        room.addToPlayers(knight1);
+        room.addToPlayers(knight2);
+        room.addToPlayers(knight3);
+        room.addToPlayers(knight4);
+        room.addToPlayers(knight5);
+        room.addToTreasures(gold);
+        room.addToTreasures(gold);
+        room.addToTreasures(gold);
+        room.addToTreasures(gold);
+        room.addToTreasures(gold);
+        room.collectTreasure();
+//        WHEN TREASURES GIVE WEALTH, THEY GENERATE A RANDOM AMOUNT. USE DEBUGGER TO CHECK
+//        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
     }
+
+//    @Test
+//    public void playersCanFight () {
+//        room.addToPlayers(knight1);
+//        room.addToPlayers(knight2);
+//        room.addToPlayers(knight3);
+//        room.addToPlayers(knight4);
+//        room.addToPlayers(knight5);
+//        room.addToTreasures(gold);
+//        room.addToTreasures(gold);
+//        room.addToTreasures(gold);
+//        room.addToTreasures(gold);
+//        room.addToTreasures(gold);
+//        room.collectTreasure();
+//
+//    }
+
+
 
 }
