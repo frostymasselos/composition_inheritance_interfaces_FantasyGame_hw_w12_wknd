@@ -28,6 +28,7 @@ public class GemTest {
 
     @Test
     public void canGenerateWealth () {
-        assertNotNull(gem.getCoreWealth());
+        assertNotNull(gem.getWealth());
+        assertEquals(0, gem.getWealth(), 0.01);
     }
 }

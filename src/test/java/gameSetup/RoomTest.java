@@ -2,6 +2,7 @@ package gameSetup;
 
 import characterTypes.Player;
 import characterTypes.antagonist.Antagonist;
+import characterTypes.antagonist.Orc;
 import characterTypes.antagonist.Troll;
 import characterTypes.warrior.Knight;
 import characterTypes.warrior.KnightType;
@@ -20,8 +21,17 @@ public class RoomTest {
     private Player knight3;
     private Player knight4;
     private Player knight5;
-    private Antagonist troll;
-    private Treasure gold;
+    private Player knight6;
+    private Antagonist troll1;
+    private Antagonist troll2;
+    private Antagonist orc1;
+    private Antagonist orc2;
+    private Antagonist orc3;
+    private Treasure gold1;
+    private Treasure gold2;
+    private Treasure gold3;
+    private Treasure gold4;
+    private Treasure gold5;
 
     @Before
     public void before () {
@@ -31,8 +41,17 @@ public class RoomTest {
         knight3 = new Knight(KnightType.BOROMIR);
         knight4 = new Knight(KnightType.BOROMIR);
         knight5 = new Knight(KnightType.BOROMIR);
-        troll = new Troll();
-        gold = new Gold();
+        knight6 = new Knight(KnightType.BOROMIR);
+        troll1 = new Troll();
+        troll2 = new Troll();
+        orc1 = new Orc();
+        orc2 = new Orc();
+        orc3 = new Orc();
+        gold1 = new Gold();
+        gold2 = new Gold();
+        gold3 = new Gold();
+        gold4 = new Gold();
+        gold5 = new Gold();
     }
 
     @Test
@@ -49,9 +68,9 @@ public class RoomTest {
     public void everyArrayCanBeAddedTo () {
         room.addToPlayers(knight1);
         room.addToDeadPlayers(knight2);
-        room.addToAntagonists(troll);
-        room.addToDeadAntagonists(troll);
-        room.addToTreasures(gold);
+        room.addToAntagonists(troll1);
+        room.addToDeadAntagonists(troll1);
+        room.addToTreasures(gold1);
         assertEquals(1, room.getPlayers().size());
         assertEquals(true, room.checkIfPlayersPopulated());
         assertEquals(1, room.getDeadPlayers().size());
@@ -61,19 +80,38 @@ public class RoomTest {
 
     }
 
+//    @Test
+//    public void fivePlayersCanGetWealthFromTreasureRoom () {
+//        room.addToPlayers(knight1);
+//        room.addToPlayers(knight2);
+//        room.addToPlayers(knight3);
+//        room.addToPlayers(knight4);
+//        room.addToPlayers(knight5);
+////        room.addToPlayers(knight6);
+//        room.addToTreasures(gold1);
+//        room.addToTreasures(gold2);
+//        room.addToTreasures(gold3);
+//        room.addToTreasures(gold4);
+//        room.addToTreasures(gold5);
+//        room.collectTreasureIfFivePlayersRemaining();
+////        WHEN TREASURES GIVE WEALTH, THEY GENERATE A RANDOM AMOUNT. USE DEBUGGER TO CHECK
+////        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
+//    }
+
     @Test
-    public void playersCanGetWealthFromTreasureRoom () {
+    public void lessThanFivePlayersCanGetWealthFromTreasureRoom () {
         room.addToPlayers(knight1);
         room.addToPlayers(knight2);
         room.addToPlayers(knight3);
         room.addToPlayers(knight4);
         room.addToPlayers(knight5);
-        room.addToTreasures(gold);
-        room.addToTreasures(gold);
-        room.addToTreasures(gold);
-        room.addToTreasures(gold);
-        room.addToTreasures(gold);
-        room.collectTreasure();
+        room.addToTreasures(gold1);
+        room.addToTreasures(gold2);
+        room.addToTreasures(gold3);
+        room.addToTreasures(gold4);
+        room.addToTreasures(gold5);
+//        room.howManyTimesWeCollect();
+        room.collectTreasureEasy();
 //        WHEN TREASURES GIVE WEALTH, THEY GENERATE A RANDOM AMOUNT. USE DEBUGGER TO CHECK
 //        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
     }
@@ -85,15 +123,12 @@ public class RoomTest {
 //        room.addToPlayers(knight3);
 //        room.addToPlayers(knight4);
 //        room.addToPlayers(knight5);
-//        room.addToTreasures(gold);
-//        room.addToTreasures(gold);
-//        room.addToTreasures(gold);
-//        room.addToTreasures(gold);
-//        room.addToTreasures(gold);
-//        room.collectTreasure();
-//
+//        room.addToAntagonists(troll1);
+//        room.addToAntagonists(troll2);
+//        room.addToAntagonists(orc1);
+//        room.addToAntagonists(orc2);
+//        room.addToAntagonists(orc3);
+//        room.fight();
 //    }
-
-
 
 }

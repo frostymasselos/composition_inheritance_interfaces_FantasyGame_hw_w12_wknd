@@ -27,8 +27,9 @@ public class GoldTest {
     }
 
     @Test
-    public void canGenerateWealth () {
-        assertNotNull(gold.getCoreWealth());
+    public void getWealthGeneratesRandomNumberAndDepletesCoreWealth () {
+        assertNotNull(gold.getWealth());
+        assertEquals(0, gold.getCoreWealth(), 0.01);
     }
 
 //    @Test
