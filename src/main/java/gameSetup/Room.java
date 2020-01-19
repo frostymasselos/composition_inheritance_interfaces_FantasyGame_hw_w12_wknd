@@ -13,9 +13,12 @@ public class Room {
     private ArrayList<Antagonist> antagonists;
     private ArrayList<Antagonist> deadAntagonists;
     private ArrayList<Treasure> treasureRoom;
-    private int tNumOneGoingOut;
-    private int tNumTwoGoingOut;
+
     private boolean tIsFirstTime;
+    private int remainder;
+    private int tracker;
+    private int whatYourStartingOn;
+    private int howMuchIsLeft;
 
 
     public Room() {
@@ -24,9 +27,13 @@ public class Room {
         this.antagonists = new ArrayList<>();
         this.deadAntagonists = new ArrayList<>();
         this.treasureRoom = new ArrayList<>();
-        this.tNumOneGoingOut = 5;
-        this.tNumTwoGoingOut = 0;
+
         this.tIsFirstTime = true;
+        this.remainder = 0;
+        this.tracker = 0;
+        this.whatYourStartingOn = 0;
+        this.howMuchIsLeft = 0;
+
 
     }
 
@@ -154,69 +161,51 @@ public class Room {
 // -------------------------------------------------------------------
 // HARD VERSION OF COLLECTING TREASURE
 
+    public void iterate (int numOneGoingIn, int numTwoGoingIn) {
 
-    public void iterate (int numOneGoingIn, int protoNumTwoGoingIn) {
-        int numTwoGoingIn = 0;
-        numTwoGoingIn = protoNumTwoGoingIn;
-        if (protoNumTwoGoingIn == 5) {
-            numTwoGoingIn = 0;
-        }
         for (int i = 0; i < (numOneGoingIn); i++) {
-            double wealth = getTreasures().get(i).getWealth();
-            getPlayers().get(i + numTwoGoingIn).addWealth(wealth);
+            double wealth = getTreasures().get(i + numTwoGoingIn).getWealth();
+            getPlayers().get(i).addWealth(wealth);
         }
-        int remainder = treasureRoom.size() - players.size();
-        if (remainder == 0) {
-            this.tNumOneGoingOut = 0;
-            this.tNumTwoGoingOut = 0;
-            this.tIsFirstTime = true;
+
+        tracker += remainder;
+
+        if (tracker == treasureRoom.size()) {
+//            remainder = 0;
+//            howMuchIsLeft = treasureRoom.size();
             return;
         }
-        tNumOneGoingOut = numTwoGoingIn - 0; //NEXT TIME DO IT FOR THIS LONG
-        tNumTwoGoingOut = 0; //NEXT TIME START INDEXII HERE
 
-        howManyTimesWeCollect();
-    }
-//    public int calculateNumOne () {
-//        int numOne = 0;
-//        if (players.size() == treasureRoom.size()) {
-//            numOne = treasureRoom.size();
-//            return numOne;
-//        }
-//
-//        int remainder = players.size() % treasureRoom.size();
-//        if (remainder == 0) {
-//            numOne = players.size();
-//        } else {
-//            numOne = remainder;
-//        }
-//        return numOne;
-//    }
-//
-//    public void collectTreasureHard () {
-//        int numOne = calculateNumOne;
-//        iterate();
-//
-//    }
-
-    public void howManyTimesWeCollect () { //THIS IS GOING TO BE RECURSIVE?
-        int remainder = treasureRoom.size() - players.size();
-        int numOneGoingIn = 0;
-        int protoNumTwoGoingIn = 0;
-        if (players.size() == 5) {
-            numOneGoingIn = 5;
+        howMuchIsLeft -= remainder;
+        if (howMuchIsLeft >= players.size()) {
+            remainder = players.size();
+        } else {
+            remainder = howMuchIsLeft;
         }
 
-        numOneGoingIn = tNumOneGoingOut;
+        iterate(remainder, tracker);
+    }
 
-        protoNumTwoGoingIn = tNumTwoGoingOut;
 
-        iterate(numOneGoingIn, protoNumTwoGoingIn);
+    public void howManyTimesWeCollect () {
+        
+        howMuchIsLeft = treasureRoom.size();
+
+        if (tIsFirstTime == true) {
+            if (howMuchIsLeft >= players.size()) {
+                remainder = players.size();
+            } else {
+                remainder = howMuchIsLeft;
+            }
+        }
+
+        iterate(remainder, tracker);
 
     }
 //    ----------------------------------------------------------------
+//EASY VERSION OF COLLECTING TREASURE
 
-    public void collectTreasureEasy () { // ONE PLAYER SCOOPS IT ALL. THEN SHARE.
+    public void collectTreasureEasy () {
 
         double totalTreasure = 0;
         double players = this.players.size();

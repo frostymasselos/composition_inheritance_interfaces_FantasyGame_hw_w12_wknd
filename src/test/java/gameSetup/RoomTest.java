@@ -102,16 +102,17 @@ public class RoomTest {
     public void lessThanFivePlayersCanGetWealthFromTreasureRoom () {
         room.addToPlayers(knight1);
         room.addToPlayers(knight2);
-        room.addToPlayers(knight3);
-        room.addToPlayers(knight4);
-        room.addToPlayers(knight5);
+//        room.addToPlayers(knight3);
+//        room.addToPlayers(knight4);
+//        room.addToPlayers(knight5);
         room.addToTreasures(gold1);
         room.addToTreasures(gold2);
         room.addToTreasures(gold3);
         room.addToTreasures(gold4);
         room.addToTreasures(gold5);
-//        room.howManyTimesWeCollect();
-        room.collectTreasureEasy();
+//        room.iterate();
+        room.howManyTimesWeCollect();
+//        room.collectTreasureEasy();
 //        WHEN TREASURES GIVE WEALTH, THEY GENERATE A RANDOM AMOUNT. USE DEBUGGER TO CHECK
 //        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
     }
