@@ -4,9 +4,7 @@ public abstract class Living implements ILiving {
 
     protected int max_Health;
     protected int current_Health;
-//    private double wealth;
     protected boolean alive;
-
 
     public Living(int max_Health) {
         this.max_Health = max_Health;
@@ -15,10 +13,14 @@ public abstract class Living implements ILiving {
         this.alive = true;
     }
 
-//    ANTAGONIST & PLAYER HEALTH ATTRIBUTES
+//    SO FAR JUST ANTAGONIST & PLAYER EXTEND THIS. CREATURES TOO?
 
     public boolean checkIfAlive () {
         return alive;
+    }
+
+    public int getHealth() {
+        return current_Health;
     }
 
     public boolean isFullHealth () {
@@ -34,27 +36,16 @@ public abstract class Living implements ILiving {
         this.alive = false;
     }
 
-    public int getHealth() {
-        return current_Health;
-    }
-
     public void sustainAttack (int attack) {
         this.looseHealth(attack);
     }
 
     public void looseHealth(int health) {
-        if (health >= 0) {
-            if ((current_Health - health) > 0) {
-                current_Health -= health;
-            } else {
-                kill();
-//                checkIfAlive();
-                System.out.println(this.getName() + " has fallen at the hands of...");
-
-            }
+        if ((current_Health - health) > 0) {
+            current_Health -= health;
         } else {
-            System.out.println("Health number is negative");
-            return;
+            kill();
+            System.out.println(this.getName() + " has fallen at the hands of...");
         }
 
         if (this.alive == false) {

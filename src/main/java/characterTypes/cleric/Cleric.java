@@ -27,4 +27,8 @@ public class Cleric extends Player {
         return this.name.getName();
     }
 
+    public int attack () {
+        return 5;
+    }
+
 }

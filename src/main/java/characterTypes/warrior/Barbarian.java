@@ -15,7 +15,4 @@ public class Barbarian extends Warrior {
         return this.name.getName();
     }
 
-    public void setName () {
-
-    }
 }

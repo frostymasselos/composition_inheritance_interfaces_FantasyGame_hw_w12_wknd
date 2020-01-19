@@ -80,24 +80,6 @@ public class RoomTest {
 
     }
 
-//    @Test
-//    public void fivePlayersCanGetWealthFromTreasureRoom () {
-//        room.addToPlayers(knight1);
-//        room.addToPlayers(knight2);
-//        room.addToPlayers(knight3);
-//        room.addToPlayers(knight4);
-//        room.addToPlayers(knight5);
-////        room.addToPlayers(knight6);
-//        room.addToTreasures(gold1);
-//        room.addToTreasures(gold2);
-//        room.addToTreasures(gold3);
-//        room.addToTreasures(gold4);
-//        room.addToTreasures(gold5);
-//        room.collectTreasureIfFivePlayersRemaining();
-////        WHEN TREASURES GIVE WEALTH, THEY GENERATE A RANDOM AMOUNT. USE DEBUGGER TO CHECK
-////        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
-//    }
-
     @Test
     public void lessThanFivePlayersCanGetWealthFromTreasureRoom () {
         room.addToPlayers(knight1);
@@ -111,7 +93,7 @@ public class RoomTest {
         room.addToTreasures(gold4);
         room.addToTreasures(gold5);
 //        room.iterate();
-        room.howManyTimesWeCollect();
+        room.collectTreasure();
 //        room.collectTreasureEasy();
 //        WHEN TREASURES GIVE WEALTH, THEY GENERATE A RANDOM AMOUNT. USE DEBUGGER TO CHECK
 //        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
@@ -129,7 +111,11 @@ public class RoomTest {
 //        room.addToAntagonists(orc1);
 //        room.addToAntagonists(orc2);
 //        room.addToAntagonists(orc3);
-//        room.fight();
+//        room.playerAttack();
 //    }
 
 }
+
+//.FIGHT
+//calls player attack, check if any dead and remove, check if all removed exit function.
+//calls antagonist attack, same as above^.

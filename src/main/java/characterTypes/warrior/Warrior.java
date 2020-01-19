@@ -37,6 +37,9 @@ public abstract class Warrior extends Player implements IFighter {
         } else {
             this.currentDefense -= attack;
         }
+        if (current_Health < 0) {
+            alive = false;
+        }
     }
 
     public WarriorWeapon getWeapon() {

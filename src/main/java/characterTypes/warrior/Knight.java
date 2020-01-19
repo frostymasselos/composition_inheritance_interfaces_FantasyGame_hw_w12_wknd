@@ -16,8 +16,4 @@ public class Knight extends Warrior {
         return this.name.getName();
     }
 
-    public void setName () {
-
-    }
-
 }

@@ -1,5 +1,6 @@
 package gameSetup;
 
+import characterTypes.Living;
 import characterTypes.Player;
 import characterTypes.antagonist.Antagonist;
 import gameSetup.treasure.Treasure;
@@ -20,6 +21,10 @@ public class Room {
     private int whatYourStartingOn;
     private int howMuchIsLeft;
 
+    private int faHowMuchIsLeft;
+    private int faRemainder;
+    private int faTracker;
+
 
     public Room() {
         this.players = new ArrayList<>();
@@ -33,6 +38,10 @@ public class Room {
         this.tracker = 0;
         this.whatYourStartingOn = 0;
         this.howMuchIsLeft = 0;
+
+        this.faHowMuchIsLeft = 0;
+        this.faRemainder = 0;
+        this.faTracker = 0;
 
 
     }
@@ -104,61 +113,28 @@ public class Room {
         this.treasureRoom.add(treasure);
     }
 
-//    SURVIVING PLAYERS COLLECT TREASURE
+//    ----------------------------------------------------------------
+//EASY VERSION OF COLLECTING TREASURE
 
-//    public int calculateRemainder () {
-//        return getTreasures().size() - getPlayers().size();
-//    }
-//
-//    public void TwoIteration (int remainder, int present) {
-//        int firstNum = getPlayers().size();
-//        int secondNum = present;
-//        for (int i = 0; i < (firstNum) ; i++) {
-//            double wealth = getTreasures().get(i + present).getWealth();
-//            getPlayers().get(i).addWealth(wealth);
-//        }
-//    }
-//
-//    public void doIterations (int remainder, int present) {
-//        if (remainder <= present/2) {
-//            int firstNum = getPlayers().size();
-//            int secondNum = 5 - remainder;
-//            TwoIteration(remainder, present);
-//        } else {
-//
-//            int firstNum = getPlayers().size();
-//
-//        }
-//    }
-//
-//    public int calculateIterations (int remainder, int present) {
-//        if ()
-//    }
-//
-//    public void
-//
-//    public void collectTreasure () {
-//
-//        int players = getPlayers().size();
-//        int present = 5;
-//        int remainder = calculateRemainder();
-//        if (remainder == 0) {
-//           collectTreasureNoRemainder();
-//           return;
-//        }
-//        int iterations = calculateIterations(remainder, present);
-//        doIterations(remainder, present);
-//    }
-//
-//    public void collectTreasureNoRemainder () {
-//        int num = getPlayers().size();
-//            for (int i = 0; i < num ; i++) {
-//                double wealth = getTreasures().get(i).getWealth();
-//                getPlayers().get(i).addWealth(wealth);
-//            }
-//    }
+    public void collectTreasureEasy () {
 
-// -------------------------------------------------------------------
+        double totalTreasure = 0;
+        double players = this.players.size();
+
+        for (Treasure treasure : treasureRoom) {
+            if (treasure.getCoreWealth() != 0) {
+                totalTreasure += treasure.getWealth();
+            }
+        }
+
+        double portion = totalTreasure / players;
+        for (Player player : this.players) {
+            player.addWealth(portion);
+        }
+
+    }
+
+// --------------------------------------------------------------------
 // HARD VERSION OF COLLECTING TREASURE
 
     public void iterate (int numOneGoingIn, int numTwoGoingIn) {
@@ -187,47 +163,63 @@ public class Room {
     }
 
 
-    public void howManyTimesWeCollect () {
-        
+    public void collectTreasure () {
+
         howMuchIsLeft = treasureRoom.size();
 
-        if (tIsFirstTime == true) {
-            if (howMuchIsLeft >= players.size()) {
-                remainder = players.size();
-            } else {
-                remainder = howMuchIsLeft;
-            }
+        if (howMuchIsLeft >= players.size()) {
+            remainder = players.size();
+        } else {
+            remainder = howMuchIsLeft;
         }
 
         iterate(remainder, tracker);
 
     }
-//    ----------------------------------------------------------------
-//EASY VERSION OF COLLECTING TREASURE
+// --------------------------------------------------------------------
+//  STUCK HERE
 
-    public void collectTreasureEasy () {
+    public void removeAntagonistToDeadPile () {
+        for (Living antagonist : antagonists) {
+            if (antagonist.checkIfAlive() == false) {
+//                antagonists.remove()
+//                Living removedOrganism = living.remove(antagonist);
 
-        double totalTreasure = 0;
-        double players = this.players.size();
 
-        for (Treasure treasure : treasureRoom) {
-            if (treasure.getCoreWealth() != 0) {
-                totalTreasure += treasure.getWealth();
             }
         }
+    }
 
-        double portion = totalTreasure / players;
-        for (Player player : this.players) {
-            player.addWealth(portion);
+
+    public void faIterate () {
+
+        for (int i = 0; i < (faRemainder); i++) {
+            int damage = players.get(i).attack();
+            antagonists.get(i).sustainAttack(damage);
+        }
+
+        faTracker += faRemainder;
+
+        if (faTracker == players.size()) {
+            return;
         }
 
     }
 
+    public void playerAttack () {
 
+        if (antagonists.size() == 0) {
+            return;
+        }
 
+        if (antagonists.size() >= players.size()) {
+            faRemainder = players.size();
+        } else {
+            faRemainder = antagonists.size();
+        }
 
-    public void fight () {
-
+        faIterate();
+        removeAntagonistToDeadPile();
     }
 
 

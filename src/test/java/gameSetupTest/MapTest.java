@@ -20,7 +20,6 @@ public class MapTest {
 //IN TEST, choose what characters to create. Map.add them.
 
 //.ADD_PLAYER
-//      Adds player to the map.
 
 //.PLAY ONE-WAVE
 //      TRIGGERS MAP.ONE WAVE.

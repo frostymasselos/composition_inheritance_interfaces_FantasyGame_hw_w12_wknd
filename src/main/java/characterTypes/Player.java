@@ -9,8 +9,6 @@ public abstract class Player extends Living implements IPlayer {
         this.wealth = 0.0;
     }
 
-    //    PLAYER HEALTH ATTRIBUTES ADDED IN
-
     public void restoreFullHealth () {
         super.current_Health = max_Health;
     }
@@ -30,10 +28,6 @@ public abstract class Player extends Living implements IPlayer {
         }
     }
 
-
-//    PLAYERS CAN ACCRUE WEALTH ADDED IN
-
-
     public double getWealth () {
         return wealth;
     }
@@ -45,6 +39,8 @@ public abstract class Player extends Living implements IPlayer {
         System.out.println(this.getName() + " now has " + Integer.toString((int)this.getWealth()) + " wealth");
     }
 
-
+//    public int attack () {
+//        return 0;
+//    }
 
 }

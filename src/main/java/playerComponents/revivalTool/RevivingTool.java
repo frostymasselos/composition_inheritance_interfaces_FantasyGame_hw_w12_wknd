@@ -63,7 +63,6 @@ public abstract class RevivingTool implements Swappable {
         }
 
         if (this.filled == false) {
-            //make sure attacks are redirected at the owner of this beast.
         } else {
             System.out.println(this.getName() + " loses " + Integer.toString(amount) + " amount");
             System.out.println(this.getName() + "'s amount is " + Integer.toString(this.current_Amount) );
