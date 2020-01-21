@@ -39,6 +39,10 @@ public abstract class Player extends Living implements IPlayer {
         System.out.println(this.getName() + " now has " + Integer.toString((int)this.getWealth()) + " wealth");
     }
 
+    public void depleteWealth () {
+        wealth = 0;
+    }
+
 //    public int attack () {
 //        return 0;
 //    }

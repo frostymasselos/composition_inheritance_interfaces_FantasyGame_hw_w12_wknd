@@ -1,4 +1,4 @@
-package gameSetup;
+package gameSetupTest;
 
 import characterTypes.Player;
 import characterTypes.antagonist.Antagonist;
@@ -6,6 +6,7 @@ import characterTypes.antagonist.Orc;
 import characterTypes.antagonist.Troll;
 import characterTypes.warrior.Knight;
 import characterTypes.warrior.KnightType;
+import gameSetup.Room;
 import gameSetup.treasure.Gold;
 import gameSetup.treasure.Treasure;
 import org.junit.Before;
@@ -111,7 +112,9 @@ public class RoomTest {
         room.addToAntagonists(orc1);
         room.addToAntagonists(orc2);
         room.addToAntagonists(orc3);
-        room.playerAttack();
+
+        assertEquals(5, room.playerAttack()); //TEST TO ENSURE SOMEONE WINS BATTLE
+
     }
 }
 

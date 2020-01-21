@@ -23,6 +23,10 @@ public abstract class Living implements ILiving {
         return current_Health;
     }
 
+    public void getFullHealth () {
+        current_Health = max_Health;
+    }
+
     public boolean isFullHealth () {
         if (current_Health == max_Health) {
             return true;

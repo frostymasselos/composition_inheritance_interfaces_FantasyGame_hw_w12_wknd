@@ -1,19 +1,193 @@
 package gameSetupTest;
 
+import characterTypes.Player;
+import characterTypes.cleric.Cleric;
+import characterTypes.magi.Warlock;
+import characterTypes.magi.WarlockType;
+import characterTypes.magi.Wizard;
+import characterTypes.magi.WizardType;
+import characterTypes.warrior.Knight;
+import characterTypes.warrior.KnightType;
 import gameSetup.Map;
+import gameSetup.Room;
+import gameSetup.treasure.Treasure;
 import org.junit.Before;
+import org.junit.Test;
+import playerComponents.revivalTool.Herb;
+import playerComponents.revivalTool.Potion;
+
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class MapTest {
 
     private Map map;
+    private Map map2;
+    private Knight knight1;
+    private Knight knight2;
+    private Knight knight3;
+    private Wizard wizard;
+    private Wizard wizard2;
 
     @Before
     public void before () {
-        map = new Map();
+        map = new Map(new ArrayList<Player>());
+        map2 = new Map(new ArrayList<Player>());
+        knight1 = new Knight(KnightType.ARAGORN);
+        knight2 = new Knight(KnightType.BOROMIR);
+        knight3 = new Knight(KnightType.ARAGORN);
+        wizard = new Wizard(WizardType.GANDALF);
+        wizard2 = new Wizard(WizardType.DUMBLEDORE);
 
+        map.addPlayerToHome(knight1);
+        map.addPlayerToHome(knight2);
+        map.addPlayerToHome(knight3);
+        map.addPlayerToHome(wizard);
+        map.addPlayerToHome(wizard2);
+
+        map2.addPlayerToHome(knight1);
+//        map2.addPlayerToHome(knight2);
+//        map2.addPlayerToHome(knight3);
+//        map2.addPlayerToHome(wizard);
+//        map2.addPlayerToHome(wizard2);
+
+        map.addRoom();
+        map2.addRoom();
+    }
+
+    @Test
+    public void playersCanBeAddedToHome () {
+        assertEquals(5, map.getHome().size());
+    }
+
+    @Test
+    public void mapCanRemoveRoom () {
+        map.removeFirstRoom();
+        assertEquals(0, map.getBattleRooms().size());
+    }
+
+    @Test
+    public void mapWillAlwaysMakeFiveTreasuresInRoom () {
+
+        map.populateBattleRoomWithTreasure();
+        assertEquals(5, map.getBattleRooms().get(0).getTreasures().size());
+    }
+
+    @Test
+    public void mapWillAlwaysMakeFiveAntagonistsInRoom () {
+        map.populateBattleRoomWithAntagonists();
+        assertEquals(5, map.getBattleRooms().get(0).getAntagonists().size());
+    }
+
+    @Test
+    public void mapWillSendCharactersInHomeToRoom () {
+        map.sendCharactersToRoom();
+        assertEquals(0, map.getHome().size());
+        assertEquals(5, map.getBattleRooms().get(0).getPlayers().size());
+    }
+
+    @Test
+    public void mapCanTriggerFight () {
+        map.populateBattleRoomWithTreasure();
+        map.populateBattleRoomWithAntagonists();
+        map.sendCharactersToRoom();
+        map.triggerFight();
+
+        assertEquals(5, map.getBattleRooms().get(0).getDeadAntagonists().size());
+    }
+
+    @Test
+    public void mapWillPlaceDeadAntagonistsInTrophy () {
+        map.populateBattleRoomWithTreasure();
+        map.populateBattleRoomWithAntagonists();
+        map.sendCharactersToRoom();
+        map.triggerFight();
+        map.getDeadAntagonistsIntoTrophy();
+
+        assertEquals(5, map.getTrophies().size());
+    }
+
+    @Test
+    public void mapWillPlaceDeadPlayersInGraveyard () {
+        map2.populateBattleRoomWithTreasure();
+        map2.populateBattleRoomWithAntagonists();
+        map2.sendCharactersToRoom();
+        map2.triggerFight();
+        map2.getDeadPlayersIntoGraveyard();
+
+        assertEquals(1, map2.getGraveyard().size());
+    }
+
+    @Test
+    public void mapCanGetPlayersBackFromRoom () {
+        map.sendCharactersToRoom();
+        map.getPlayersBackFromRoom();
+        assertEquals(0, map.getBattleRooms().get(0).getPlayers().size());
+        assertEquals(5, map.getHome().size());
+    }
+
+//    @Test
+//    public void mapCanTriggerPlayersToCollectTreasure () {
+//        map.populateBattleRoomWithTreasure();
+//        map.populateBattleRoomWithAntagonists();
+//        map.sendCharactersToRoom();
+//        map.triggerFight();
+//        map.triggerCollectTreasure();
+//        map.getPlayersBackFromRoom();
+//        map.addToWealthPot();
+//        assertEquals(100, map.getWealth());
+//        //Random generated: should just give assertion error.
+//    }
+
+//    @Test
+//    public void mapCanCalculatePoints () {
+//        map.populateBattleRoomWithTreasure();
+//        map.populateBattleRoomWithAntagonists();
+//        map.sendCharactersToRoom();
+//        map.triggerFight();
+//        map.getDeadAntagonistsIntoTrophy();
+//
+//        assertEquals(100, map.getTotalPoints());
+//        //Random generated: should just give assertion error.
+//    }
+//
+
+    @Test
+    public void mapCanShuffleHome () {
+        map.shuffleHome();
+        assertEquals(5, map.getHome().size());
+//        Use debugger to check shuffle.
+    }
+
+    @Test
+    public void mapCanDecideIfGameIsOver () {
+        map.decideIfGameOver();
+        assertEquals (false, map.isGameOver());
+    }
+
+    @Test
+    public void canPlayGame () {
+        assertEquals(5, map.playGame());
+    }
+
+    @Test
+    public void mapCanEmptyEverythingAfterGame () {
+        map.emptyMap();
+
+        assertEquals (0, map.getHome().size());
+        assertEquals(0, map.getGraveyard().size());
+        assertEquals(0, map.getTrophies().size());
+        assertEquals(0, map.getBattleRooms().size());
+        assertEquals(0, map.getWealth());
+        assertEquals(0, map.getTotalPoints());
+        assertEquals(0, map.getWavesCompleted());
+        assertEquals(false, map.isGameOver());
     }
 
 }
+
+//BELOW IS MY OWN PLANNING FOR ROOM & GAME
 
 //GAME PROPERTIES
 //AL MAP

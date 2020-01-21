@@ -34,7 +34,6 @@ public class Room {
     private int pRHowMuchIsLeft;
 
 
-
     public Room() {
         this.players = new ArrayList<>();
         this.temporaryPlayers = new ArrayList<>();
@@ -195,10 +194,6 @@ public class Room {
 // --------------------------------------------------------------------
 // PLAYERS ATTACK ANTAGONISTS
 
-    public int finishBattle(){
-        return 5;
-    }
-
     public void removeAntagonistsToDeadPile () {
         for (Antagonist antagonist : antagonists) {
             if (antagonist.checkIfAlive() == false) {
@@ -229,6 +224,7 @@ public class Room {
 //            return;
 //        }
         antagonistAttack();
+        return;
     }
 
 
@@ -258,12 +254,12 @@ public class Room {
 
     }
 
-    public void playerAttack () {
+    public int playerAttack () {
 
         aRHowMuchIsLeft = players.size();
         aHowMuchIsLeft = players.size();
-        if (antagonists.size() == 0) {
-            return;
+        if (antagonists.size() == 0) { //might not need this code.
+            return 5;
         }
 
         if (antagonists.size() >= players.size()) {
@@ -273,7 +269,14 @@ public class Room {
         }
 
         aIterate(aRemainder, aTracker);
-        finishBattle();
+
+        if (players.size() > 0) {
+            System.out.println("players completed wave");
+        } else {
+            System.out.println("don't think players survived");
+        }
+
+        return 5;
 //        removeAntagonistsToDeadPile();
     }
 
@@ -288,7 +291,7 @@ public class Room {
             }
         }
 
-        if (deadPlayers.size() == 5) {
+        if (deadPlayers.size() == aRHowMuchIsLeft) {
             return;
         }
 
@@ -305,10 +308,6 @@ public class Room {
         }
 
         temporaryPlayers.clear();
-
-//        if (players.size() == 0) {
-//            return;
-//        }
 
         playerAttack();
     }
@@ -354,9 +353,9 @@ public class Room {
         }
 
         pIterate(aRemainder, aTracker);
-        finishBattle();
+        return;
+//        finishBattle();
     }
-
 
 }
 
