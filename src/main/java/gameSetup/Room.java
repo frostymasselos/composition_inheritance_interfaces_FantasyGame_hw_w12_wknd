@@ -10,8 +10,10 @@ import java.util.ArrayList;
 public class Room {
 
     private ArrayList<Player> players;
+    private ArrayList<Player> temporaryPlayers;
     private ArrayList<Player> deadPlayers;
     private ArrayList<Antagonist> antagonists;
+    private ArrayList<Antagonist> temporaryAntagonists;
     private ArrayList<Antagonist> deadAntagonists;
     private ArrayList<Treasure> treasureRoom;
 
@@ -21,15 +23,24 @@ public class Room {
     private int whatYourStartingOn;
     private int howMuchIsLeft;
 
-    private int faHowMuchIsLeft;
-    private int faRemainder;
-    private int faTracker;
+    private int aHowMuchIsLeft;
+    private int aRemainder;
+    private int aTracker;
+    private int aRHowMuchIsLeft;
+
+    private int pHowMuchIsLeft;
+    private int pRemainder;
+    private int pTracker;
+    private int pRHowMuchIsLeft;
+
 
 
     public Room() {
         this.players = new ArrayList<>();
+        this.temporaryPlayers = new ArrayList<>();
         this.deadPlayers = new ArrayList<>();
         this.antagonists = new ArrayList<>();
+        this.temporaryAntagonists = new ArrayList<>();
         this.deadAntagonists = new ArrayList<>();
         this.treasureRoom = new ArrayList<>();
 
@@ -39,10 +50,15 @@ public class Room {
         this.whatYourStartingOn = 0;
         this.howMuchIsLeft = 0;
 
-        this.faHowMuchIsLeft = 0;
-        this.faRemainder = 0;
-        this.faTracker = 0;
+        this.aHowMuchIsLeft = 0;
+        this.aRemainder = 0;
+        this.aTracker = 0;
+        this.aRHowMuchIsLeft = 0;
 
+        this.pHowMuchIsLeft = 0;
+        this.pRemainder = 0;
+        this.pTracker = 0;
+        this.pRHowMuchIsLeft = 0;
 
     }
 
@@ -177,53 +193,170 @@ public class Room {
 
     }
 // --------------------------------------------------------------------
-//  STUCK HERE
+// PLAYERS ATTACK ANTAGONISTS
 
-    public void removeAntagonistToDeadPile () {
-        for (Living antagonist : antagonists) {
+    public int finishBattle(){
+        return 5;
+    }
+
+    public void removeAntagonistsToDeadPile () {
+        for (Antagonist antagonist : antagonists) {
             if (antagonist.checkIfAlive() == false) {
-//                antagonists.remove()
-//                Living removedOrganism = living.remove(antagonist);
-
-
+                deadAntagonists.add(antagonist);
+//                antagonists.remove(antagonist);
             }
         }
+
+        if (deadAntagonists.size() == 5) {
+            return;
+        }
+
+        for (Antagonist antagonist : antagonists) {
+            if (antagonist.checkIfAlive() == true) {
+                temporaryAntagonists.add(antagonist);
+            }
+        }
+
+        antagonists.clear();
+
+        for (Antagonist antagonist : temporaryAntagonists) {
+            antagonists.add(antagonist);
+        }
+
+        temporaryAntagonists.clear();
+
+//        if (antagonists.size() == 0) { //do we need this line anymore?
+//            return;
+//        }
+        antagonistAttack();
     }
 
 
-    public void faIterate () {
+    public void aIterate (int numOneGoingIn, int numTwoGoingIn) {
 
-        for (int i = 0; i < (faRemainder); i++) {
-            int damage = players.get(i).attack();
+        for (int i = 0; i < (aRemainder); i++) {
+            int damage = players.get(i + numTwoGoingIn).attack();
             antagonists.get(i).sustainAttack(damage);
         }
 
-        faTracker += faRemainder;
+        aTracker += aRemainder;
 
-        if (faTracker == players.size()) {
+        if (aTracker == aRHowMuchIsLeft) {
+            aTracker = 0;
+            removeAntagonistsToDeadPile();
             return;
         }
+
+        aHowMuchIsLeft -= aRemainder;
+        if (aHowMuchIsLeft <= antagonists.size()) {
+            aRemainder = aHowMuchIsLeft;
+        } else {
+            aRemainder = antagonists.size();
+        }
+
+        aIterate(aRemainder, aTracker);
 
     }
 
     public void playerAttack () {
 
+        aRHowMuchIsLeft = players.size();
+        aHowMuchIsLeft = players.size();
         if (antagonists.size() == 0) {
             return;
         }
 
         if (antagonists.size() >= players.size()) {
-            faRemainder = players.size();
+            aRemainder = players.size();
         } else {
-            faRemainder = antagonists.size();
+            aRemainder = antagonists.size();
         }
 
-        faIterate();
-        removeAntagonistToDeadPile();
+        aIterate(aRemainder, aTracker);
+        finishBattle();
+//        removeAntagonistsToDeadPile();
+    }
+
+//    ------------------------------------------------------------------------------------------------------------------
+//    ANTAGONISTS ATTACK PLAYERS
+
+    public void removePlayersToDeadPile () {
+        for (Player player : players) {
+            if (player.checkIfAlive() == false) {
+                deadPlayers.add(player);
+//                players.remove(player);
+            }
+        }
+
+        if (deadPlayers.size() == 5) {
+            return;
+        }
+
+        for (Player player : players) {
+            if (player.checkIfAlive() == true) {
+                temporaryPlayers.add(player);
+            }
+        }
+
+        players.clear();
+
+        for (Player player : temporaryPlayers) {
+            players.add(player);
+        }
+
+        temporaryPlayers.clear();
+
+//        if (players.size() == 0) {
+//            return;
+//        }
+
+        playerAttack();
     }
 
 
+    public void pIterate (int numOneGoingIn, int numTwoGoingIn) {
 
+        for (int i = 0; i < (pRemainder); i++) {
+            int damage = antagonists.get(i + numTwoGoingIn).attack();
+            players.get(i).sustainAttack(damage);
+        }
+
+        pTracker += pRemainder;
+
+        if (pTracker == pRHowMuchIsLeft) {
+            pTracker = 0;
+            removePlayersToDeadPile();
+            return;
+        }
+
+        pHowMuchIsLeft -= pRemainder;
+        if (pHowMuchIsLeft <= players.size()) {
+            pRemainder = pHowMuchIsLeft;
+        } else {
+            aRemainder = antagonists.size();
+        }
+        pIterate(aRemainder, aTracker);
+
+    }
+
+    public void antagonistAttack () {
+
+        pRHowMuchIsLeft = antagonists.size();
+        pHowMuchIsLeft = antagonists.size();
+        if (players.size() == 0) {
+            return;
+        }
+
+        if (players.size() >= antagonists.size()) {
+            pRemainder = antagonists.size();
+        } else {
+            pRemainder = players.size();
+        }
+
+        pIterate(aRemainder, aTracker);
+        finishBattle();
+    }
 
 
 }
+

@@ -40,9 +40,9 @@ public abstract class Living implements ILiving {
         this.looseHealth(attack);
     }
 
-    public void looseHealth(int health) {
-        if ((current_Health - health) > 0) {
-            current_Health -= health;
+    public void looseHealth(int damage) {
+        if ((current_Health - damage) > 0) {
+            current_Health -= damage;
         } else {
             kill();
             System.out.println(this.getName() + " has fallen at the hands of...");
@@ -51,7 +51,7 @@ public abstract class Living implements ILiving {
         if (this.alive == false) {
             //remove character from game; whatever array he'll alway be in when fighting, he'll be removed from.
         } else {
-            System.out.println(this.getName() + " took " + Integer.toString(health) + " damage");
+            System.out.println(this.getName() + " took " + Integer.toString(damage) + " damage");
             System.out.println(this.getName() + "'s health is " + Integer.toString(this.current_Health) );
         }
     }

@@ -99,23 +99,19 @@ public class RoomTest {
 //        EVERY PLAYER IS ASSIGNED A (DIFFERENT) AMOUNT.
     }
 
-//    @Test
-//    public void playersCanFight () {
-//        room.addToPlayers(knight1);
-//        room.addToPlayers(knight2);
-//        room.addToPlayers(knight3);
-//        room.addToPlayers(knight4);
-//        room.addToPlayers(knight5);
-//        room.addToAntagonists(troll1);
-//        room.addToAntagonists(troll2);
-//        room.addToAntagonists(orc1);
-//        room.addToAntagonists(orc2);
-//        room.addToAntagonists(orc3);
-//        room.playerAttack();
-//    }
-
+    @Test
+    public void playersCanFight () {
+        room.addToPlayers(knight1);
+        room.addToPlayers(knight2);
+        room.addToPlayers(knight3);
+        room.addToPlayers(knight4);
+        room.addToPlayers(knight5);
+        room.addToAntagonists(troll1);
+        room.addToAntagonists(troll2);
+        room.addToAntagonists(orc1);
+        room.addToAntagonists(orc2);
+        room.addToAntagonists(orc3);
+        room.playerAttack();
+    }
 }
 
-//.FIGHT
-//calls player attack, check if any dead and remove, check if all removed exit function.
-//calls antagonist attack, same as above^.
